@@ -1,0 +1,6 @@
+# Specific denylist - these tend to have tokens saved in their config
+sanity
+raycast
+zed/prompts
+zed/conversation
+!zed/settings.json
