@@ -22,6 +22,8 @@
     starship
     ncdu
     jq
+    jetbrains-mono
+    inter
   ];
 
   # Git config (replaces your git/config file)
@@ -32,6 +34,14 @@
       user.email = "david@demaree.me";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
+      credential.helper = "!gh auth git-credential";
+
+      # "https://github.com" = {
+      #   helper = "!gh auth git-credential";
+      # };
+      # "https://gist.github.com" = {
+      #   helper = "!gh auth git-credential";
+      # };
     };
 
     ignores = [
@@ -52,16 +62,23 @@
 
   programs.zed-editor = {
     enable = true;
-    extensions = [ "nix" "toml" "rust" "astro" "html" ];
-    userSettings = {
-      theme = {
-        mode = "system";
-        dark = "One Dark";
-        light = "One Light";
-      };
-      hour_format = "hour24";
-      vim_mode = true;
-    };
+    # extensions = [ "nix" "toml" "rust" "astro" "html" ];
+    # userSettings = {
+    #   # buffer_font_family = "Berkeley Mono, JetBrains Mono, monospace";
+    #   buffer_font_size = 14;
+    #   theme = {
+    #     mode = "system";
+    #     dark = "One Dark";
+    #     light = "One Light";
+    #   };
+    #   hour_format = "hour24";
+    #   vim_mode = true;
+    # };
+  };
+
+  xdg.configFile."zed" = {
+    source = ../../zed;  # path relative to this nix file
+    recursive = true;
   };
 
   programs.tmux = {
