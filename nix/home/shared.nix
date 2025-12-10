@@ -26,27 +26,11 @@
     inter
   ];
 
-  # Git config (replaces your git/config file)
-  programs.git = {
-    enable = true;
-    settings = {
-      user.name = "David Demaree";
-      user.email = "david@demaree.me";
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
-      credential.helper = "!gh auth git-credential";
+  programs.git.enable = true;
 
-      # "https://github.com" = {
-      #   helper = "!gh auth git-credential";
-      # };
-      # "https://gist.github.com" = {
-      #   helper = "!gh auth git-credential";
-      # };
-    };
-
-    ignores = [
-      "**/.claude/settings.local.json"
-    ];
+  xdg.configFile."git" = {
+    source = ../../git;  # path relative to this nix file
+    recursive = true;
   };
 
   programs.delta = {
