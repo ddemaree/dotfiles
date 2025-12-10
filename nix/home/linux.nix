@@ -2,8 +2,6 @@
 {
   imports = [ ./shared.nix ];
 
-  home.homeDirectory = /home/david;
-
   # ZSH config (moved from system level for consistency with Mac)
   programs.zsh = {
     enable = true;

@@ -27,25 +27,41 @@
   # Git config (replaces your git/config file)
   programs.git = {
     enable = true;
-    userName = "David Demaree";
-    userEmail = "david@demaree.me";
-
-    extraConfig = {
+    settings = {
+      user.name = "David Demaree";
+      user.email = "david@demaree.me";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
     };
-
-    delta.enable = true;  # you already have delta installed
 
     ignores = [
       "**/.claude/settings.local.json"
     ];
   };
 
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     vimAlias = true;
+  };
+
+  programs.zed-editor = {
+    enable = true;
+    extensions = [ "nix" "toml" "rust" "astro" "html" ];
+    userSettings = {
+      theme = {
+        mode = "system";
+        dark = "One Dark";
+        light = "One Light";
+      };
+      hour_format = "hour24";
+      vim_mode = true;
+    };
   };
 
   programs.tmux = {

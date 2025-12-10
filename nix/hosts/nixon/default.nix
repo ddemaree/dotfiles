@@ -5,10 +5,12 @@
     ./hardware-configuration.nix
   ];
 
+  nix.settings.download-buffer-size = 128 * 1024 * 1024;
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   networking.hostName = "nixon";
   networking.networkmanager.enable = true;
@@ -31,13 +33,16 @@
   # GNOME Desktop
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    # displayManager.gdm.enable = true;
+    # desktopManager.gnome.enable = true;
     videoDrivers = [ "nvidia" ];
     xkb.layout = "us";
   };
 
-  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+
+  services.desktopManager.gnome.extraGSettingsOverrides = ''
     [org.gnome.mutter]
     experimental-features=['scale-monitor-framebuffer']
 
@@ -123,13 +128,13 @@
   services.openssh.enable = true;
   services.tailscale.enable = true;
 
-  services.ollama = {
-    enable = true;
-    loadModels = [ "gpt-oss:20b" "gpt-oss:120b-cloud" "deepseek-r1:1.5b" ];
-    acceleration = "cuda";
-  };
+  # services.ollama = {
+  #   enable = true;
+  #   loadModels = [ "gpt-oss:20b" "gpt-oss:120b-cloud" "deepseek-r1:1.5b" ];
+  #   package = pkgs.ollama-cuda;
+  # };
 
-  services.open-webui.enable = true;
+  # services.open-webui.enable = true;
 
   system.stateVersion = "25.05";
 }
