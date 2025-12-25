@@ -1,3 +1,5 @@
 [user]
 name = David Demaree
 email = david@demaree.me
+[pull]
+	rebase = false

@@ -4,3 +4,4 @@ raycast
 zed/prompts
 zed/conversation
 !zed/settings.json
+configstore
