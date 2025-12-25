@@ -1,5 +1,33 @@
 [user]
 name = David Demaree
 email = david@demaree.me
+
 [pull]
-	rebase = false
+rebase = false
+
+[core]
+pager = "delta"
+
+[credential]
+helper = "!gh auth git-credential"
+
+[credential "https://github.com"]
+helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+helper = !gh auth git-credential
+
+[gpg]
+format = "openpgp"
+
+[gpg "openpgp"]
+program = "!gpg"
+
+[init]
+defaultBranch = "main"
+
+[interactive]
+diffFilter = "delta --color-only"
+
+[push]
+autoSetupRemote = true

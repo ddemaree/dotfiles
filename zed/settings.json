@@ -7,9 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "ui_font_family": ".ZedSans",
   "buffer_font_weight": 350.0,
-  "buffer_font_family": "Berkeley Mono",
   "icon_theme": "Zed (Default)",
   "soft_wrap": "editor_width",
   "hard_tabs": false,
@@ -17,13 +15,7 @@
   "edit_predictions": {
     "mode": "subtle"
   },
-  "base_keymap": "Cursor",
   "vim_mode": true,
   "ui_font_size": 16,
-  "buffer_font_size": 15,
-  "theme": {
-    "mode": "system",
-    "light": "Dracula Pro (Alucard)",
-    "dark": "Dracula Pro"
-  }
+  "buffer_font_size": 15
 }

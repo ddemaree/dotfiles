@@ -1,0 +1,36 @@
+{ pkgs, lib, ... }:
+{
+  imports = [ ./shared.nix ];
+
+  # ZSH config (moved from system level for consistency with Mac)
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    history = {
+      size = 10000;
+      path = "$HOME/.zsh_history";
+      ignoreDups = true;
+      ignoreAllDups = true;
+    };
+
+    shellAliases = {
+      ll = "eza -l";
+      la = "eza -la";
+      update = "sudo nixos-rebuild switch --flake ~/dotfiles#nixon";
+    };
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      # theme handled by starship instead
+    };
+  };
+
+  # Linux-specific packages (if any CLI tools are linux-only)
+  home.packages = with pkgs; [
+    # linux-specific CLI tools
+  ];
+}
