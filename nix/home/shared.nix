@@ -24,6 +24,23 @@
     jq
     jetbrains-mono
     inter
+    nodejs_24
+    pnpm_9
+    bun
+    tmux
+    mise
+    claude-code
+    _1password-gui
+    chromium
+    google-chrome
+    vscode
+    code-cursor
+    ghostty
+    discord
+    slack
+    geekbench
+    wget
+    unzip
   ];
 
   programs.git.enable = true;
