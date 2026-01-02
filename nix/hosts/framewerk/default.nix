@@ -2,17 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, user, ... }:
+{ config, pkgs, user, inputs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      inputs.nixos-hardware.nixosModules.framework-16-amd-ai-300-series-nvidia
       ./hardware-configuration.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Use latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "framewerk"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -60,11 +64,15 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # NVIDIA
-  hardware.graphics.enable = true;
+  # hardware.graphics.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
     nvidiaSettings = true;
+    prime = {
+      amdgpuBusId = "PCI:195:0:0";
+      nvidiaBusId = "PCI:194:0:0";
+    };
   };
 
   # Enable CUPS to print documents.

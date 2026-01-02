@@ -12,9 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty.url = "github:ghostty-org/ghostty";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ghostty }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ghostty, nixos-hardware }:
   let
     user = "david";
 
@@ -39,22 +40,24 @@
 
     nixosConfigurations."nixon" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs user; };
+      specialArgs = { inherit inputs user; hostname = "nixon"; };
       modules = [
         ./hosts/nixon
         home-manager.nixosModules.home-manager
         homeManagerConfig
+        { home-manager.extraSpecialArgs = { hostname = "nixon"; }; }
         { home-manager.users.${user} = import ./home/linux.nix; }
       ];
     };
 
     nixosConfigurations."framewerk" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs user; };
+      specialArgs = { inherit inputs user; hostname = "framewerk"; };
       modules = [
         ./hosts/framewerk
         home-manager.nixosModules.home-manager
         homeManagerConfig
+        { home-manager.extraSpecialArgs = { hostname = "framewerk"; }; }
         { home-manager.users.${user} = import ./home/linux.nix; }
       ];
     };

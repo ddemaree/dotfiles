@@ -119,6 +119,11 @@
     '';
   };
 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+  };
+
   programs.zoxide.enable = true;
   programs.fzf.enable = true;
   programs.starship.enable = true;

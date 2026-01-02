@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, hostname, ... }:
 {
   imports = [ ./shared.nix ];
 
@@ -19,7 +19,7 @@
     shellAliases = {
       ll = "eza -l";
       la = "eza -la";
-      update = "sudo nixos-rebuild switch --flake ~/dotfiles#nixon";
+      update = "sudo nixos-rebuild switch --flake ~/Code/dotfiles#${hostname}";
     };
 
     oh-my-zsh = {
