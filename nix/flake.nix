@@ -47,5 +47,16 @@
         { home-manager.users.${user} = import ./home/linux.nix; }
       ];
     };
+
+    nixosConfigurations."framewerk" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs user; };
+      modules = [
+        ./hosts/framewerk
+        home-manager.nixosModules.home-manager
+        homeManagerConfig
+        { home-manager.users.${user} = import ./home/linux.nix; }
+      ];
+    };
   };
 }
