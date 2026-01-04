@@ -13,9 +13,12 @@
     };
     ghostty.url = "github:ghostty-org/ghostty";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    hyprland.url = "github:hyprwm/Hyprland";
+    vicinae.url = "github:vicinaehq/vicinae";
+    polypane.url = "github:mrtrimble/polypane-flake";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ghostty, nixos-hardware }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ghostty, nixos-hardware, hyprland, vicinae, polypane }:
   let
     user = "david";
 
@@ -45,6 +48,7 @@
         ./hosts/nixon
         home-manager.nixosModules.home-manager
         homeManagerConfig
+        { home-manager.sharedModules = [ vicinae.homeManagerModules.default ]; }
         { home-manager.extraSpecialArgs = { hostname = "nixon"; }; }
         { home-manager.users.${user} = import ./home/linux.nix; }
       ];
@@ -52,11 +56,12 @@
 
     nixosConfigurations."framewerk" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs user; hostname = "framewerk"; };
+      specialArgs = { inherit inputs user polypane; hostname = "framewerk"; };
       modules = [
         ./hosts/framewerk
         home-manager.nixosModules.home-manager
         homeManagerConfig
+        { home-manager.sharedModules = [ vicinae.homeManagerModules.default ]; }
         { home-manager.extraSpecialArgs = { hostname = "framewerk"; }; }
         { home-manager.users.${user} = import ./home/linux.nix; }
       ];

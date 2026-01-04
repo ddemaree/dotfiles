@@ -24,6 +24,7 @@
     jq
     jetbrains-mono
     inter
+    ibm-plex
     nodejs_24
     pnpm_9
     bun

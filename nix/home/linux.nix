@@ -1,6 +1,17 @@
-{ pkgs, lib, hostname, ... }:
+{ pkgs, lib, hostname, inputs, ... }:
 {
   imports = [ ./shared.nix ];
+
+  services.vicinae = {
+    enable = true;
+    systemd = {
+      enable = true;
+      autoStart = true;
+      environment = {
+        USE_LAYER_SHELL = 1;
+      };
+    };
+  };
 
   # ZSH config (moved from system level for consistency with Mac)
   programs.zsh = {
@@ -32,5 +43,7 @@
   # Linux-specific packages (if any CLI tools are linux-only)
   home.packages = with pkgs; [
     # linux-specific CLI tools
+    obsidian
+    inputs.polypane.packages.x86_64-linux.polypane
   ];
 }
