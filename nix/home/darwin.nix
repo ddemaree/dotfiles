@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  imports = [ ./shared.nix ];
+  imports = [ ./cli.nix ];
 
   home.homeDirectory = lib.mkForce /Users/david;
 

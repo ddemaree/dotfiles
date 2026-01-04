@@ -9,8 +9,9 @@
     EDITOR = "nvim";
   };
 
-  # Packages you want on both machines
+  # CLI packages shared across all platforms (Linux, macOS, WSL)
   home.packages = with pkgs; [
+    # Core CLI tools
     ripgrep
     fd
     fzf
@@ -22,26 +23,21 @@
     starship
     ncdu
     jq
-    jetbrains-mono
-    inter
-    ibm-plex
+    wget
+    unzip
+
+    # Development tools
     nodejs_24
     pnpm_9
     bun
     tmux
     mise
     claude-code
-    _1password-gui
-    chromium
-    google-chrome
-    vscode
-    code-cursor
-    ghostty
-    discord
-    slack
-    geekbench
-    wget
-    unzip
+
+    # Fonts (for terminal use)
+    jetbrains-mono
+    inter
+    ibm-plex
   ];
 
   programs.git.enable = true;
@@ -64,18 +60,6 @@
 
   programs.zed-editor = {
     enable = true;
-    # extensions = [ "nix" "toml" "rust" "astro" "html" ];
-    # userSettings = {
-    #   # buffer_font_family = "Berkeley Mono, JetBrains Mono, monospace";
-    #   buffer_font_size = 14;
-    #   theme = {
-    #     mode = "system";
-    #     dark = "One Dark";
-    #     light = "One Light";
-    #   };
-    #   hour_format = "hour24";
-    #   vim_mode = true;
-    # };
   };
 
   xdg.configFile."zed" = {

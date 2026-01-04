@@ -56,7 +56,7 @@
 
     nixosConfigurations."framewerk" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs user polypane; hostname = "framewerk"; };
+      specialArgs = { inherit inputs user; hostname = "framewerk"; };
       modules = [
         ./hosts/framewerk
         home-manager.nixosModules.home-manager
@@ -65,6 +65,16 @@
         { home-manager.extraSpecialArgs = { hostname = "framewerk"; }; }
         { home-manager.users.${user} = import ./home/linux.nix; }
       ];
+    };
+
+    # Standalone home-manager for WSL
+    homeConfigurations."david@wsl" = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+      extraSpecialArgs = { inherit inputs user; };
+      modules = [ ./home/wsl.nix ];
     };
   };
 }

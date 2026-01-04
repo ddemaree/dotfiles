@@ -1,11 +1,10 @@
-{ pkgs, lib, hostname, inputs, ... }:
+{ pkgs, lib, ... }:
 {
-  imports = [
-    ./cli.nix
-    ./linux-gui.nix
-  ];
+  imports = [ ./cli.nix ];
 
-  # ZSH config for Linux
+  home.homeDirectory = lib.mkForce /home/david;
+
+  # ZSH config for WSL
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -22,7 +21,7 @@
     shellAliases = {
       ll = "eza -l";
       la = "eza -la";
-      update = "sudo nixos-rebuild switch --flake ~/Code/dotfiles/nix#${hostname}";
+      update = "home-manager switch --flake ~/Code/dotfiles/nix#david@wsl";
     };
 
     oh-my-zsh = {
