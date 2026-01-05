@@ -14,6 +14,15 @@
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.kernelParams = [
+    "quiet"
+    "loglevel=3"
+  ];
+
+  # Plymouth boot splash
+  boot.plymouth.enable = true;
+  boot.plymouth.theme = "bgrt";
+
   networking.hostName = "framewerk";
   networking.networkmanager.enable = true;
 
@@ -51,6 +60,18 @@
   environment.systemPackages = with pkgs; [
     gnome-tweaks
     bibata-cursors
+    gnomeExtensions.pop-shell
+    fuzzel             # launcher
+    waybar             # status bar
+    dunst              # notifications
+    hyprlock           # lockscreen
+    hypridle           # idle daemon
+    hyprpaper          # wallpaper
+    wl-clipboard       # clipboard
+    grim               # screenshots
+    slurp              # region selection
+    pavucontrol        # audio control
+    networkmanagerapplet
   ];
 
   # Hyprland
@@ -59,6 +80,9 @@
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
+
+  # Required services
+  security.polkit.enable = true;
 
   # GNOME tweaks
   programs.dconf.profiles.user.databases = [
@@ -69,6 +93,11 @@
             "scale-monitor-framebuffer"
             "variable-refresh-rate"
             "xwayland-native-scaling"
+          ];
+        };
+        "org/gnome/shell" = {
+          enabled-extensions = [
+            "pop-shell@system76.com"
           ];
         };
       };

@@ -30,6 +30,13 @@
   # Printing
   services.printing.enable = true;
 
+  # Fonts
+  fonts.packages = with pkgs; [
+    font-awesome
+    noto-fonts-color-emoji
+  ];
+  fonts.fontconfig.defaultFonts.emoji = [ "Noto Color Emoji" ];
+
   # User account
   users.users.${user} = {
     isNormalUser = true;
