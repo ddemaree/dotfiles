@@ -43,7 +43,7 @@
   users.users.${user} = {
     isNormalUser = true;
     description = "David Demaree";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
     shell = pkgs.zsh;
   };
 
