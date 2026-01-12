@@ -34,6 +34,8 @@
   fonts.packages = with pkgs; [
     font-awesome
     noto-fonts-color-emoji
+    nerd-fonts.caskaydia-mono
+    recursive
   ];
   fonts.fontconfig.defaultFonts.emoji = [ "Noto Color Emoji" ];
 
@@ -65,4 +67,15 @@
   services.flatpak.enable = true;
   services.openssh.enable = true;
   services.tailscale.enable = true;
+
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    docker.enable = true;
+    # podman = {
+    #   enable = true;
+    #   dockerCompat = true;
+    #   dockerSocket.enable = true;
+    #   defaultNetwork.settings.dns_enabled = true;
+    # };
+  };
 }

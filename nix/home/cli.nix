@@ -20,6 +20,7 @@
     delta
     gh
     lazygit
+    lazydocker
     starship
     ncdu
     jq

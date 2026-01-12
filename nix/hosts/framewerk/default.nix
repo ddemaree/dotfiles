@@ -39,7 +39,9 @@
   # GNOME Desktop
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
+  # services.desktopManager.plasma6.enable = true;
   # services.desktopManager.cosmic.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -52,6 +54,10 @@
     prime = {
       amdgpuBusId = "PCI:195:0:0";
       nvidiaBusId = "PCI:194:0:0";
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
     };
   };
 
