@@ -7,6 +7,8 @@
     ../shared-linux.nix
   ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -37,6 +39,8 @@
   # GNOME Desktop
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.cosmic.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -58,6 +62,7 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
+    dnsmasq
     gnome-tweaks
     bibata-cursors
     gnomeExtensions.pop-shell
@@ -72,7 +77,14 @@
     slurp              # region selection
     pavucontrol        # audio control
     networkmanagerapplet
+    fastfetch
+    btop
+    davinci-resolve
   ];
+
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  programs.virt-manager.enable = true;
 
   # Hyprland
   programs.hyprland = {
