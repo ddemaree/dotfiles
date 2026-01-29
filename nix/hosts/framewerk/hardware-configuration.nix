@@ -8,6 +8,20 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  # boot.kernelPackages = pkgs.linuxPackages_6_17;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.kernelParams = [
+    "quiet"
+    "loglevel=3"
+    "amdgpu.umsch_mm=0"
+    "amdgpu.gpu_recovery=1"
+  ];
+
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
@@ -29,5 +43,7 @@
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

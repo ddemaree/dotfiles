@@ -44,14 +44,14 @@
     isNormalUser = true;
     description = "David Demaree";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.fish;
   security.sudo.wheelNeedsPassword = false;
 
   # System-level programs
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
   programs.firefox.enable = true;
   programs.steam = {
     enable = true;
@@ -68,14 +68,16 @@
   services.openssh.enable = true;
   services.tailscale.enable = true;
 
+  environment.localBinInPath = true;
+
+  environment.shellAliases = {
+    la = "eza -la";
+    ll = "eza -l";
+  };
+
   virtualisation.containers.enable = true;
   virtualisation = {
     docker.enable = true;
-    # podman = {
-    #   enable = true;
-    #   dockerCompat = true;
-    #   dockerSocket.enable = true;
-    #   defaultNetwork.settings.dns_enabled = true;
-    # };
+    podman.enable = true;
   };
 }

@@ -3,31 +3,11 @@
   imports = [
     ./cli.nix
     ./linux-gui.nix
+    (import ./zsh-config.nix {
+      updateCommand = "sudo nixos-rebuild switch --flake ~/Code/dotfiles/nix#${hostname}";
+    })
+    (import ./fish-config.nix {
+      updateCommand = "sudo nixos-rebuild switch --flake ~/Code/dotfiles/nix#${hostname}";
+    })
   ];
-
-  # ZSH config for Linux
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    history = {
-      size = 10000;
-      path = "$HOME/.zsh_history";
-      ignoreDups = true;
-      ignoreAllDups = true;
-    };
-
-    shellAliases = {
-      ll = "eza -l";
-      la = "eza -la";
-      update = "sudo nixos-rebuild switch --flake ~/Code/dotfiles/nix#${hostname}";
-    };
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-    };
-  };
 }
