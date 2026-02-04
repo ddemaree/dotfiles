@@ -1,0 +1,37 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "hard_tabs": false,
+  "soft_wrap": "editor_width",
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    {{ if eq .chezmoi.os "linux" }}
+    "light": "One Light",
+    "dark": "Ayu Dark"
+    {{ else }}
+    "light": "Dracula Pro (Alucard)",
+    "dark": "Dracula Pro"
+    {{ end }}
+  },
+  "context_servers": {
+    "Sanity": {
+      "url": "https://mcp.sanity.io",
+      "headers": {
+        "Authorization": "Bearer skqxU7vVGFKDStkniNg5iORlmpLC3OmpRbJiIpCGmmTU1YD9y0Puc1420PF197DGqpppWowEz5nE1Zqkg"
+      },
+      "settings": {}
+    }
+  }
+}
