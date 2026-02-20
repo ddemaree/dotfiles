@@ -9,28 +9,13 @@
     vimAlias = true;
   };
 
-  programs.starship.enable = true;
-
-  programs.zoxide = {
-    enable = true;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
-  };
-
-  programs.television = {
-    enable = true;
-    enableFishIntegration = false;
-    # enableZshIntegration = true;
-  };
-
-  programs.fzf.enable = true;
-
   programs.tmux = {
     enable = true;
     keyMode = "vi";
     shortcut = "a";
-    mouse = true;
     extraConfig = ''
+      set -g mouse on
+
       # Automatically set window title
       set-window-option -g automatic-rename on
       set-option -g set-titles on
@@ -63,6 +48,10 @@
   };
 
   environment.systemPackages = with pkgs; [
+    starship
+    zoxide
+    television
+    fzf
     ghostty
     cool-retro-term
 

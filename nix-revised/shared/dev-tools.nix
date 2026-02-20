@@ -6,12 +6,8 @@
   programs.git.enable = true;
   programs.lazygit.enable = true;
 
-  programs.delta = {
-    enable = true;
-    enableGitIntegration = true;
-  };
-
   environment.systemPackages = with pkgs; [
+    delta
     python3
     # bun
     # nodejs_22

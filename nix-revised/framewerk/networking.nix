@@ -5,20 +5,20 @@
   networking.hostName = "framewerk";
   networking.networkmanager.enable = true;
 
-  networking.wireless.iwd = {
-    enable = true;
-    settings = {
-      General = {
-        EnableNetworkConfiguration = true;
-      };
-      Network = {
-        EnableIPv6 = true;
-      };
-      Scan = {
-        DisablePeriodicScan = true;
-      };
-    };
-  };
+  # networking.wireless.iwd = {
+  #   enable = true;
+  #   settings = {
+  #     General = {
+  #       EnableNetworkConfiguration = true;
+  #     };
+  #     Network = {
+  #       EnableIPv6 = true;
+  #     };
+  #     Scan = {
+  #       DisablePeriodicScan = true;
+  #     };
+  #   };
+  # };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
