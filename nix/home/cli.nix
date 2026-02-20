@@ -51,8 +51,6 @@
     mise
     claude-code
 
-    nodePackages.vercel
-
     # Fonts (for terminal use)
     jetbrains-mono
     inter
