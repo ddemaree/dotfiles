@@ -31,6 +31,8 @@
     jq
     wget
     unzip
+    xclip
+    xsel
 
     # System utilities
     fastfetch
@@ -43,10 +45,13 @@
     gnumake
     gnupg
     nodejs_22
+    pnpm_9
     bun
     tmux
     mise
     claude-code
+
+    nodePackages.vercel
 
     # Fonts (for terminal use)
     jetbrains-mono
@@ -117,12 +122,16 @@
 
   programs.fish = {
     enable = true;
+
+    interactiveShellInit = ''
+      tv init fish | source
+    '';
   };
 
   programs.television = {
     enable = true;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
+    enableFishIntegration = false;
+    # enableZshIntegration = true;
   };
 
   programs.zoxide = {
