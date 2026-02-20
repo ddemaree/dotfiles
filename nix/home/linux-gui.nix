@@ -4,10 +4,10 @@
     enable = true;
   };
 
-  xdg.configFile."zed" = {
-    source = ../../zed; # path relative to this nix file
-    recursive = true;
-  };
+  # xdg.configFile."zed" = {
+  #   source = ../../zed; # path relative to this nix file
+  #   recursive = true;
+  # };
 
   # GUI packages for Linux desktop environments
   home.packages = with pkgs; [
