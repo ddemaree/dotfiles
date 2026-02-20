@@ -62,10 +62,10 @@
 
   programs.git.enable = true;
 
-  xdg.configFile."git" = {
-    source = ../../git; # path relative to this nix file
-    recursive = true;
-  };
+  # xdg.configFile."git" = {
+  #   source = ../../git; # path relative to this nix file
+  #   recursive = true;
+  # };
 
   programs.delta = {
     enable = true;
