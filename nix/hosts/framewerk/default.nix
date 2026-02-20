@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ../shared-linux.nix
     ../shared-gnome.nix
+    ../shared-hyprland.nix
   ];
 
   nix.settings.experimental-features = [
