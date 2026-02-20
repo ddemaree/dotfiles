@@ -383,7 +383,14 @@ in
         spacing = 8;
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
-        modules-right = [ "idle_inhibitor" "pulseaudio" "backlight" "battery" "network" "tray" ];
+        modules-right = [
+          "idle_inhibitor"
+          "pulseaudio"
+          "backlight"
+          "battery"
+          "network"
+          "tray"
+        ];
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -413,14 +420,24 @@ in
           format = "{icon} {volume}%";
           format-muted = " muted";
           format-icons = {
-            default = [ "" "" "" ];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = "pavucontrol";
         };
 
         backlight = {
           format = "{icon} {percent}%";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
 
         battery = {
@@ -431,7 +448,13 @@ in
           format = "{icon} {capacity}%";
           format-charging = " {capacity}%";
           format-plugged = " {capacity}%";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
 
         network = {
@@ -562,65 +585,67 @@ in
       drun-display-format = "{name}";
       disable-history = false;
     };
-    theme = let
-      inherit (builtins) concatStringsSep;
-    in builtins.toFile "catppuccin-mocha.rasi" ''
-      * {
-        bg: #${catppuccin.base};
-        bg-alt: #${catppuccin.mantle};
-        fg: #${catppuccin.text};
-        accent: #${catppuccin.lavender};
-        border-colour: #${catppuccin.surface0};
-        background-color: @bg;
-        text-color: @fg;
-      }
+    theme =
+      let
+        inherit (builtins) concatStringsSep;
+      in
+      builtins.toFile "catppuccin-mocha.rasi" ''
+        * {
+          bg: #${catppuccin.base};
+          bg-alt: #${catppuccin.mantle};
+          fg: #${catppuccin.text};
+          accent: #${catppuccin.lavender};
+          border-colour: #${catppuccin.surface0};
+          background-color: @bg;
+          text-color: @fg;
+        }
 
-      window {
-        width: 600px;
-        border: 2px;
-        border-color: @border-colour;
-        border-radius: 12px;
-        padding: 20px;
-      }
+        window {
+          width: 600px;
+          border: 2px;
+          border-color: @border-colour;
+          border-radius: 12px;
+          padding: 20px;
+        }
 
-      inputbar {
-        children: [ prompt, entry ];
-        padding: 8px;
-        background-color: @bg-alt;
-        border-radius: 8px;
-      }
+        inputbar {
+          children: [ prompt, entry ];
+          padding: 8px;
+          background-color: @bg-alt;
+          border-radius: 8px;
+        }
 
-      prompt {
-        padding: 0 8px 0 0;
-        text-color: @accent;
-        background-color: transparent;
-      }
+        prompt {
+          padding: 0 8px 0 0;
+          text-color: @accent;
+          background-color: transparent;
+        }
 
-      entry {
-        background-color: transparent;
-        placeholder: "Search...";
-        placeholder-color: #${catppuccin.overlay0};
-      }
+        entry {
+          background-color: transparent;
+          placeholder: "Search...";
+          placeholder-color: #${catppuccin.overlay0};
+        }
 
-      listview {
-        lines: 8;
-        columns: 1;
-        spacing: 4px;
-        padding: 8px 0 0 0;
-        background-color: transparent;
-      }
+        listview {
+          lines: 8;
+          columns: 1;
+          spacing: 4px;
+          padding: 8px 0 0 0;
+          background-color: transparent;
+        }
 
-      element {
-        padding: 8px;
-        border-radius: 8px;
-        background-color: transparent;
-      }
+        element {
+          padding: 8px;
+          border-radius: 8px;
+          background-color: transparent;
+        }
 
-      element selected {
-        background-color: @bg-alt;
-        text-color: @accent;
-      }
-    '';
+        element selected {
+          background-color: @bg-alt;
+          text-color: @accent;
+        }
+      '';
   };
 
   # ---------------------------------------------------------------------------
