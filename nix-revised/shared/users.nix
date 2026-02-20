@@ -22,6 +22,8 @@
       obsidian
       _1password-gui
       inputs.polypane.packages.x86_64-linux.polypane
+      zed-editor
+      geekbench
     ];
   };
 

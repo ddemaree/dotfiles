@@ -34,6 +34,13 @@
         modules = [
           inputs.nixos-hardware.nixosModules.framework-16-amd-ai-300-series-nvidia
           ./framewerk
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.david = import ./framewerk/home.nix;
+          }
         ];
       };
     };

@@ -2,6 +2,7 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  environment.localBinInPath = true;
 
   # Nix Configuration
   nix.settings = {
