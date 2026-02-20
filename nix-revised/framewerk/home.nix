@@ -53,6 +53,11 @@ in
     interactiveShellInit = ''
       tv init fish | source
     '';
+    shellAliases = {
+      ll = "eza -l";
+      la = "eza -la";
+      update = "sudo nixos-rebuild switch --flake ~/Code/dotfiles/nix-revised#framewerk";
+    };
   };
 
   programs.git.enable = true;
@@ -60,6 +65,20 @@ in
   programs.delta = {
     enable = true;
     options.navigate = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+  };
+
+  programs.fzf.enable = true;
+  programs.starship.enable = true;
+
+  programs.television = {
+    enable = true;
+    enableFishIntegration = false; # using manual init instead
   };
 
   # ---------------------------------------------------------------------------
@@ -130,7 +149,7 @@ in
           enabled = true;
           size = 5;
           passes = 3;
-          new_optimizations = true;
+
           ignore_opacity = true;
         };
         shadow = {
@@ -162,18 +181,9 @@ in
         preserve_split = true;
       };
 
-      # -- Gestures --
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_fingers = 3;
-      };
-
       # -- Misc --
       misc = {
         disable_hyprland_logo = true;
-        disable_splash_rendering = true;
-        vfr = true;
-        force_default_wallpaper = 0;
       };
 
       cursor = {
@@ -181,16 +191,16 @@ in
       };
 
       # -- Window Rules --
-      windowrulev2 = [
-        "float, class:^(pavucontrol)$"
-        "float, class:^(nm-connection-editor)$"
-        "float, class:^(1Password)$"
-        "float, title:^(Open File)$"
-        "float, title:^(Open Folder)$"
-        "float, title:^(Save As)$"
-        "float, title:^(File Upload)$"
-        "float, class:^(xdg-desktop-portal-gtk)$"
-        "float, class:^(org.gnome.Nautilus)$, title:^(Properties)$"
+      windowrule = [
+        "float on, match:class ^(pavucontrol)$"
+        "float on, match:class ^(nm-connection-editor)$"
+        "float on, match:class ^(1Password)$"
+        "float on, match:title ^(Open File)$"
+        "float on, match:title ^(Open Folder)$"
+        "float on, match:title ^(Save As)$"
+        "float on, match:title ^(File Upload)$"
+        "float on, match:class ^(xdg-desktop-portal-gtk)$"
+        "float on, match:class ^(org.gnome.Nautilus)$, match:title ^(Properties)$"
       ];
 
       # -- Keybindings --
@@ -709,5 +719,27 @@ in
     # Theming
     papirus-icon-theme
     bibata-cursors
+
+    # CLI tools
+    gh
+    lazygit
+    lazydocker
+    fastfetch
+    btop
+    distrobox
+    python3
+    gcc
+    gnumake
+    gnupg
+    nodejs_22
+    pnpm_9
+    bun
+    mise
+    claude-code
+
+    # GUI apps
+    code-cursor
+    ghostty
+    warp-terminal
   ];
 }

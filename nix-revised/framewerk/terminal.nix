@@ -48,11 +48,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    starship
-    zoxide
-    television
-    fzf
-    ghostty
     cool-retro-term
 
     eza
