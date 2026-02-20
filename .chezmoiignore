@@ -1,0 +1,7 @@
+README.md
+nix
+
+# Linux-only configs — ignore on macOS
+{{ if eq .chezmoi.os "darwin" }}
+.config/waybar
+{{ end }}
