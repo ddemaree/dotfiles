@@ -104,7 +104,7 @@
     # ouch
     # duf
     # dust
-    # fd
+    fd
     # trash-cli
     # tokei
     # bat
