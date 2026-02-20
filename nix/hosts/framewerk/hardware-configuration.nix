@@ -15,7 +15,7 @@
   ];
 
   # boot.kernelPackages = pkgs.linuxPackages_6_17;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -46,6 +46,15 @@
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/EE18-A0C5";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
+  };
+
+  fileSystems."/efi" = {
+    device = "/dev/disk/by-uuid/7AC4-983E";
     fsType = "vfat";
     options = [
       "fmask=0077"
