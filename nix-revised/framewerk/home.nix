@@ -28,6 +28,16 @@ let
     flamingo = "f2cdcd";
     rosewater = "f5e0dc";
   };
+
+  hypr-keybinds = pkgs.writeShellScript "hypr-keybinds" ''
+    hyprctl binds -j | ${pkgs.jq}/bin/jq -r '.[] |
+      (if .modmask == 64 then "Super"
+       elif .modmask == 65 then "Super+Shift"
+       elif .modmask == 0 then ""
+       else "Mod\(.modmask)" end) as $m |
+      "\($m) + \(.key) → \(.dispatcher) \(.arg)"' |
+      rofi -dmenu -i -p "Keybindings"
+  '';
 in
 {
   home.username = "david";
@@ -93,19 +103,33 @@ in
     settings = {
       # -- Monitors --
       monitor = [
-        "eDP-1, 2560x1600@165, 0x0, 1.5"
-        ", preferred, auto, 1"
+        "eDP-1, 2560x1600@165, 0x0, 1.6"
+        "desc:LG Electronics LG SDQHD 208NTMX6P611, preferred, auto, 1.33"
+        ", preferred, auto, auto"
       ];
 
       # -- Environment --
       env = [
         "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
         "XCURSOR_THEME,Bibata-Modern-Classic"
+        "GDK_SCALE,2"
+        "STEAM_FORCE_DESKTOPUI_SCALING,2"
         "QT_QPA_PLATFORM,wayland;xcb"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
+
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "GDK_BACKEND,wayland,x11,*"
+        "MOZ_ENABLE_WAYLAND,1"
+        "LIBVA_DRIVER_NAME,nvidia"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+        "QT_STYLE_OVERRIDE,kvantum"
+        "OZONE_PLATFORM,wayland"
+        "SDL_VIDEODRIVER,wayland,x11"
       ];
 
       # -- Autostart --
@@ -181,6 +205,11 @@ in
         preserve_split = true;
       };
 
+      # -- XWayland --
+      xwayland = {
+        force_zero_scaling = true;
+      };
+
       # -- Misc --
       misc = {
         disable_hyprland_logo = true;
@@ -211,6 +240,7 @@ in
         "$mod, Return, exec, ghostty"
         "$mod, Q, killactive"
         "$mod, Space, exec, rofi -show drun -show-icons"
+        "$mod, slash, exec, ${hypr-keybinds}"
         "$mod, E, exec, nautilus"
         "$mod, Escape, exec, hyprlock"
 
@@ -288,6 +318,8 @@ in
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPrev, exec, playerctl previous"
       ];
+
+      gesture = "3, horizontal, workspace";
     };
   };
 
@@ -405,9 +437,9 @@ in
         "hyprland/workspaces" = {
           format = "{icon}";
           format-icons = {
-            active = "";
-            default = "";
-            urgent = "";
+            active = "󰮯";
+            default = "󰊠";
+            urgent = "󰀨";
           };
           on-click = "activate";
           sort-by-number = true;
@@ -421,19 +453,19 @@ in
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
-            activated = "";
-            deactivated = "";
+            activated = "󰅶";
+            deactivated = "󰾪";
           };
         };
 
         pulseaudio = {
           format = "{icon} {volume}%";
-          format-muted = " muted";
+          format-muted = "󰝟 muted";
           format-icons = {
             default = [
-              ""
-              ""
-              ""
+              "󰕿"
+              "󰖀"
+              "󰕾"
             ];
           };
           on-click = "pavucontrol";
@@ -442,11 +474,9 @@ in
         backlight = {
           format = "{icon} {percent}%";
           format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
+            "󰃞"
+            "󰃟"
+            "󰃠"
           ];
         };
 
@@ -456,21 +486,21 @@ in
             critical = 15;
           };
           format = "{icon} {capacity}%";
-          format-charging = " {capacity}%";
-          format-plugged = " {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          format-plugged = "󰚥 {capacity}%";
           format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
+            "󰁺"
+            "󰁼"
+            "󰁾"
+            "󰂀"
+            "󰁹"
           ];
         };
 
         network = {
-          format-wifi = " {essid}";
-          format-ethernet = " {ifname}";
-          format-disconnected = " disconnected";
+          format-wifi = "󰤨 {essid}";
+          format-ethernet = "󰈀 {ifname}";
+          format-disconnected = "󰤭 disconnected";
           tooltip-format = "{ipaddr}/{cidr}";
         };
 
