@@ -1,5 +1,6 @@
 README.md
 nix
+nix-revised
 
 # Linux-only configs — ignore on macOS
 {{ if eq .chezmoi.os "darwin" }}
