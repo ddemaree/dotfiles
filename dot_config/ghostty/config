@@ -21,54 +21,33 @@
 # reloaded while running; some only apply to new windows and others may require
 # a full restart to take effect.
 
-# Config syntax crash course
-# ==========================
-# # The config file consists of simple key-value pairs,
-# # separated by equals signs.
-font-family = Berkeley Mono
-# window-padding-x = 2
-#
-# # Spacing around the equals sign does not matter.
-# # All of these are identical:
-# key=value
-# key= value
-# key =value
-# key = value
-#
-# # Any line beginning with a # is a comment. It's not possible to put
-# # a comment after a config option, since it would be interpreted as a
-# # part of the value. For example, this will have a value of "#123abc":
-# background = #123abc
-#
-# # Empty values are used to reset config keys to default.
-# key =
-#
-# # Some config options have unique syntaxes for their value,
-# # which is explained in the docs for that config option.
-# # Just for example:
-# resize-overlay-duration = 4s 200ms
+# font-family = Berkeley Mono
+font-family = JetBrainsMono Nerd Font
+font-family = Font Awesome 7 Free
 
+window-padding-x = 8
+window-padding-y = 4,8
 
 # Dracula Pro color scheme
-palette = 0=#22212C
-palette = 1=#FF9580
-palette = 2=#8AFF80
-palette = 3=#FFFF80
-palette = 4=#9580FF
-palette = 5=#FF80BF
-palette = 6=#80FFEA
-palette = 7=#F8F8F2
-palette = 8=#4C6762
-palette = 9=#FFAA99
-palette = 10=#A2FF99
-palette = 11=#FFFF99
-palette = 12=#AA99FF
-palette = 13=#FF99CC
-palette = 14=#99FFEE
-palette = 15=#FFFFFF
-background = #212C2A
-foreground = #F8F8F2
-cursor-color = #70A99F
-cursor-text = #70A99F
-selection-background = #415854
-selection-foreground = #F8F8F2
+# palette = 0=#22212C
+# palette = 1=#FF9580
+# palette = 2=#8AFF80
+# palette = 3=#FFFF80
+# palette = 4=#9580FF
+# palette = 5=#FF80BF
+# palette = 6=#80FFEA
+# palette = 7=#F8F8F2
+# palette = 8=#4C6762
+# palette = 9=#FFAA99
+# palette = 10=#A2FF99
+# palette = 11=#FFFF99
+# palette = 12=#AA99FF
+# palette = 13=#FF99CC
+# palette = 14=#99FFEE
+# palette = 15=#FFFFFF
+# background = #212C2A
+# foreground = #F8F8F2
+# cursor-color = #70A99F
+# cursor-text = #70A99F
+# selection-background = #415854
+# selection-foreground = #F8F8F2
