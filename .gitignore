@@ -5,3 +5,6 @@ zed/prompts
 zed/conversation
 !zed/settings.json
 configstore
+
+# Claude Code machine-local settings (per-machine paths, personal prefs)
+.claude/settings.local.json
