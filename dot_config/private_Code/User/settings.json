@@ -1,0 +1,10 @@
+{
+    "editor.fontFamily": "'Berkeley Mono', 'Adwaita Mono', 'Droid Sans Mono', monospace",
+    "terminal.external.linuxExec": "ghostty",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    }
+}

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-hyprctl binds -j | jq -r '.[] |
-  (if .modmask == 64 then "Super"
-    elif .modmask == 65 then "Super+Shift"
-    elif .modmask == 0 then ""
-    else "Mod\(.modmask)" end) as $m |
-  "\($m) + \(.key) → \(.dispatcher) \(.arg)"' |
-  vicinae dmenu --placeholder "Keybindings"

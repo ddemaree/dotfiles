@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "defaultMode": "auto"
   },
@@ -16,8 +20,5 @@
   "tui": "fullscreen",
   "theme": "dark",
   "switchModelsOnFlag": false,
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  }
+  "model": "claude-opus-5"
 }

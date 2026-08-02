@@ -2,7 +2,12 @@ README.md
 nix
 nix-revised
 
-# Linux-only configs — ignore on macOS
-{{ if eq .chezmoi.os "darwin" }}
-.config/waybar
-{{ end }}
+# Contains a live OAuth token. Machine-local auth state, not config.
+# Recreated by `gh auth login`.
+.config/gh/hosts.yml
+
+# Machine-generated state, not config. Every value in it is written
+# automatically: the pure_* vars by the fish-pure-prompt package, the
+# __done_* vars by cachyos-fish-config, and fish_user_paths by the
+# fish_add_path line in our own config.fish. Also hardcodes $HOME.
+.config/fish/fish_variables
