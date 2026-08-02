@@ -4,9 +4,12 @@
       "WebFetch(domain:wiki.nixos.org)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:github.com)",
-      "Bash(nix flake check:*)"
+      "Bash(nix flake check:*)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "spinnerTipsEnabled": false
 }
