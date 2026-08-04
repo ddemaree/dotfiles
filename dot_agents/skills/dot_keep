@@ -1,0 +1,6 @@
+# Keeps ~/.agents/skills tracked even when it has no committed skills.
+# Skills committed under dot_agents/skills/ in the chezmoi repo are the shared
+# defaults deployed to every machine. Skills dropped directly into
+# ~/.agents/skills on a machine are left untouched by chezmoi (this directory is
+# NOT `exact_`), so local-only skills never become part of the repo unless you
+# explicitly `chezmoi add` them.

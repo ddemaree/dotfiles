@@ -1,25 +1,23 @@
 { pkgs, inputs, ... }:
 {
-  # Vicinae service (Linux GUI only)
-  services.vicinae = {
+  programs.zed-editor = {
     enable = true;
-    systemd = {
-      enable = true;
-      autoStart = true;
-      environment = {
-        USE_LAYER_SHELL = 1;
-      };
-    };
   };
+
+  # xdg.configFile."zed" = {
+  #   source = ../../zed; # path relative to this nix file
+  #   recursive = true;
+  # };
 
   # GUI packages for Linux desktop environments
   home.packages = with pkgs; [
     # Browsers
-    chromium
     google-chrome
+    firefox-devedition
+    warp-terminal
 
     # Development tools
-    vscode
+    # vscode
     code-cursor
     ghostty
 
@@ -33,6 +31,7 @@
 
     # Utilities
     geekbench
+    davinci-resolve
 
     # External flake packages
     inputs.polypane.packages.x86_64-linux.polypane

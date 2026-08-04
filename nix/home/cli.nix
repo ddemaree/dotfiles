@@ -1,4 +1,9 @@
-{ pkgs, user, lib, ... }:
+{
+  pkgs,
+  user,
+  lib,
+  ...
+}:
 {
   home.username = user;
   home.stateVersion = "24.11";
@@ -26,9 +31,20 @@
     jq
     wget
     unzip
+    xclip
+    xsel
+
+    # System utilities
+    fastfetch
+    btop
+    distrobox
 
     # Development tools
-    nodejs_24
+    python3
+    gcc
+    gnumake
+    gnupg
+    nodejs_22
     pnpm_9
     bun
     tmux
@@ -39,14 +55,15 @@
     jetbrains-mono
     inter
     ibm-plex
+    mona-sans
   ];
 
   programs.git.enable = true;
 
-  xdg.configFile."git" = {
-    source = ../../git;  # path relative to this nix file
-    recursive = true;
-  };
+  # xdg.configFile."git" = {
+  #   source = ../../git; # path relative to this nix file
+  #   recursive = true;
+  # };
 
   programs.delta = {
     enable = true;
@@ -57,15 +74,6 @@
     enable = true;
     defaultEditor = true;
     vimAlias = true;
-  };
-
-  programs.zed-editor = {
-    enable = true;
-  };
-
-  xdg.configFile."zed" = {
-    source = ../../zed;  # path relative to this nix file
-    recursive = true;
   };
 
   programs.tmux = {
@@ -110,7 +118,26 @@
     enableCompletion = true;
   };
 
-  programs.zoxide.enable = true;
+  programs.fish = {
+    enable = true;
+
+    interactiveShellInit = ''
+      tv init fish | source
+    '';
+  };
+
+  programs.television = {
+    enable = true;
+    enableFishIntegration = false;
+    # enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+  };
+
   programs.fzf.enable = true;
   programs.starship.enable = true;
 }

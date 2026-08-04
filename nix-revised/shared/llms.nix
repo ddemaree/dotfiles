@@ -1,0 +1,49 @@
+{ pkgs, inputs, ... }:
+
+{
+
+  # services.ollama = {
+  #   enable = true;
+  #   loadModels = [
+  #     "llama3.2:3b"
+  #     "smallthinker:3b"
+  #     "gemma3n:e4b"
+  #     "gemma3:4b"
+  #     "gpt-oss:20b"
+  #     "second_constantine/gpt-oss-u:20b"
+  #     "qwen3:14b"
+  #     "devstral-small-2:24b"
+  #     "glm-4.7-flash"
+  #     "nomic-embed-text-v2-moe"
+  #     "x/z-image-turbo"
+  #     "x/flux2-klein:4b"
+  #     "x/flux2-klein:9b"
+  #   ];
+  #   syncModels = true;
+  #   package = pkgs.ollama-cuda;
+  # };
+
+  # services.n8n = {
+  #   enable = true;
+  # };
+
+  # systemd.services.n8n = {
+  #   serviceConfig = {
+  #     Environment = "PATH=/run/current-system/sw/bin";
+  #   };
+  # };
+
+  # services.open-webui = {
+  #   enable = true;
+  #   port = 8888;
+  #   host = "127.0.0.1";
+  # };
+
+  # In your system packages:
+  environment.systemPackages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+    claude-code
+    opencode
+    gemini-cli
+    # ... other tools
+  ];
+}
