@@ -9,15 +9,14 @@ if test -f /usr/share/cachyos-fish-config/cachyos-config.fish
     source /usr/share/cachyos-fish-config/cachyos-config.fish
 end
 
-# Homebrew and the per-tool shell integrations (starship, mise, zoxide, fzf,
-# direnv, tv) live in conf.d/ — see 00-homebrew.fish and 50-tool-init.fish.
+# PATH and the per-tool shell integrations (starship, mise, zoxide, fzf,
+# direnv, tv) live in conf.d/, which fish sources before this file — see
+# 00-homebrew.fish, 10-path.fish and 50-tool-init.fish.
 
 set -g fish_greeting
 set -gx EDITOR nvim
 
 if status is-interactive
-    fish_add_path ~/.local/bin
-
     alias la='eza -la'
     alias ll='eza -l'
     alias moi='chezmoi'
