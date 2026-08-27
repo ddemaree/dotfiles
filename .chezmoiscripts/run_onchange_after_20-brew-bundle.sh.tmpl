@@ -1,0 +1,11 @@
+#!/bin/sh
+# Re-runs only when the Brewfile changes — that is what the hash below is for.
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+set -eu
+
+# Linux hosts in this repo are managed through nix/, and casks are macOS-only.
+[ "$(uname)" = Darwin ] || exit 0
+command -v brew >/dev/null 2>&1 || { echo "brew not found — skipping bundle" >&2; exit 0; }
+
+echo "==> brew bundle"
+brew bundle --file="{{ .chezmoi.sourceDir }}/Brewfile"

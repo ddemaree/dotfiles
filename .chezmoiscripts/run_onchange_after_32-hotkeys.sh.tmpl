@@ -1,0 +1,21 @@
+#!/bin/sh
+# Restores every customised keyboard shortcut, not just the well-known ones:
+# Cmd+Space is freed for Raycast, the five screenshot bindings for CleanShot X,
+# and there is a zoom/accessibility block plus the Ctrl+Space input-source pair
+# that would be tedious to reconstruct by hand.
+#
+# plist hash: {{ include "macos/symbolichotkeys.plist" | sha256sum }}
+set -eu
+[ "$(uname)" = Darwin ] || exit 0
+
+echo "==> importing keyboard shortcuts"
+defaults import com.apple.symbolichotkeys \
+    "{{ .chezmoi.sourceDir }}/macos/symbolichotkeys.plist"
+
+# The hotkey table is read at login; killall SystemUIServer is not enough.
+ACTIVATE=/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings
+if [ -x "$ACTIVATE" ]; then
+    "$ACTIVATE" -u
+else
+    echo "   activateSettings missing — log out and back in to apply" >&2
+fi

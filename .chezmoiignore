@@ -21,3 +21,8 @@ nix-revised
 
 # Karabiner writes a dated snapshot on every change. Config only, not churn.
 .config/karabiner/automatic_backups
+
+# Data consumed by scripts in .chezmoiscripts/, not files to install into $HOME.
+# (.chezmoiscripts is special-cased by chezmoi and never needs ignoring.)
+Brewfile
+macos
