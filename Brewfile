@@ -6,7 +6,6 @@
 # we don't actually have an opinion about.
 
 tap "ddev/ddev"
-tap "steipete/tap"
 
 # ---------- shell ----------
 brew "fish"
@@ -40,7 +39,6 @@ brew "imagemagick"
 brew "sevenzip"
 brew "wget"
 brew "opencode"            # pulls node + ripgrep
-brew "steipete/tap/imsg"
 brew "dockutil"            # drives the Dock script
 
 # Deliberately absent: tailscale. The Mac app ships its own CLI, so the
