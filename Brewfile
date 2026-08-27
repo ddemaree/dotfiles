@@ -1,11 +1,9 @@
-# Brewfile — the top-level Homebrew install, nothing more.
 # Applied by .chezmoiscripts/run_onchange_after_20-brew-bundle.sh.tmpl
-#
-# Dependencies are deliberately not listed: php arrives with composer,
-# node and ripgrep arrive with opencode. Listing them would pin packages
-# we don't actually have an opinion about.
 
 tap "ddev/ddev"
+
+# ---------- core ----------
+brew "tailscale"
 
 # ---------- shell ----------
 brew "fish"
@@ -55,7 +53,7 @@ cask "betterdisplay"
 cask "zed"
 cask "cursor"
 cask "orbstack"
-cask "linear-linear"
+cask "linear"
 
 cask "google-chrome"
 cask "firefox@developer-edition"
@@ -77,6 +75,8 @@ cask "fantastical"
 cask "notion"
 cask "obsidian"
 cask "google-drive"
+cask "grok-bot"
+cask "chatgpt"
 
 cask "elgato-control-center"
 cask "elgato-stream-deck"
