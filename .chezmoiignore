@@ -11,3 +11,13 @@ nix-revised
 # __done_* vars by cachyos-fish-config, and fish_user_paths by the
 # fish_add_path line in our own config.fish. Also hardcodes $HOME.
 .config/fish/fish_variables
+
+# Linux-only tooling. fastfetch is not installed on macOS, and vicinae is the
+# Linux analogue of Raycast — neither should be applied on a Mac.
+{{ if eq .chezmoi.os "darwin" }}
+.config/fastfetch
+.config/vicinae
+{{ end }}
+
+# Karabiner writes a dated snapshot on every change. Config only, not churn.
+.config/karabiner/automatic_backups

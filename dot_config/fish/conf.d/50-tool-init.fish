@@ -24,14 +24,6 @@ if status is-interactive
         end
     end
 
-    # OpenClaw
-    test -f "~/.openclaw/completions/openclaw.fish"; and source "~/.openclaw/completions/openclaw.fish"
-
-    # LM Studio CLI
-    if test -f "~/.lmstudio/bin"
-        set -gx PATH $PATH ~/.lmstudio/bin
-    end
-
     # OrbStack
     if test -f ~/.orbstack/shell/init2.fish
         source ~/.orbstack/shell/init2.fish 2>/dev/null || :

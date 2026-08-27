@@ -1,29 +1,33 @@
+
 # ~/.zshrc
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# 
+# # bun
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
+# 
+# # pnpm
+# export PNPM_HOME="/Users/david/Library/pnpm"
+# case ":$PATH:" in
+#   *":$PNPM_HOME:"*) ;;
+#   *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
+# # pnpm end
+# 
+# # bun completions
+# [ -s "/Users/david/.bun/_bun" ] && source "/Users/david/.bun/_bun"
 
-# pnpm
-export PNPM_HOME="/Users/david/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+export PATH="$HOME/.local/bin:$HOME/.bin:$PATH"
 
-# bun completions
-[ -s "/Users/david/.bun/_bun" ] && source "/Users/david/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$HOME/.local/bin:$HOME/.bin:$BUN_INSTALL/bin:$PATH"
+eval "$(mise activate zsh)"
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 if [ -n "$SSH_CONNECTION" ]; then
     export TERM=xterm-256color
 fi
 
 
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-eval "$(~/.local/bin/mise activate zsh)"

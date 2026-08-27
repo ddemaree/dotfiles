@@ -4,11 +4,16 @@
     "pr": ""
   },
   "permissions": {
-    "defaultMode": "auto"
+    "defaultMode": "auto",
+    "allow": [
+      "mcp__pencil"
+    ]
   },
   "enabledPlugins": {
-    "chrome-devtools-mcp@chrome-devtools-plugins": true,
-    "vercel@claude-plugins-official": true
+    "vercel@claude-plugins-official": true,
+    "posthog@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "chrome-devtools-mcp@chrome-devtools-plugins": true
   },
   "extraKnownMarketplaces": {
     "chrome-devtools-plugins": {
