@@ -44,6 +44,7 @@ brew "dockutil"            # drives the Dock script
 # Deliberately absent: nvm. mise owns Node.
 
 # ---------- casks ----------
+cask "openlogi"
 cask "1password"
 cask "1password-cli"
 cask "raycast"
